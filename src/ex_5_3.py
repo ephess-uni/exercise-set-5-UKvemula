@@ -29,3 +29,4 @@ if __name__ == "__main__":
     outfile = Path(root_dir, "outputs", args.outfile)
 
     process_data(infile, outfile)
+

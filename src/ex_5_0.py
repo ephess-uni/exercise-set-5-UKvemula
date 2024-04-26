@@ -18,6 +18,7 @@ def line_count(infile):
     pass
 
 
+
 if __name__ == "__main__":
     # get the utility function for path discovery
     try:

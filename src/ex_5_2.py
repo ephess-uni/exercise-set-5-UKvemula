@@ -33,3 +33,4 @@ if __name__ == "__main__":
     OUTFILE = root_dir / "outputs" / "ex_5_2-processed.csv"
 
     process_data(INFILE, OUTFILE)
+
