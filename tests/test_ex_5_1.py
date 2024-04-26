@@ -1,24 +1,20 @@
-"""test_ex_5_1.py"""
-from os import path, system
+import os
+from subprocess import run, PIPE
+import pytest
 
-MODULE_PATH = path.join(path.dirname(__file__), "../src/ex_5_1.py")
+MODULE_PATH = os.path.join(os.path.dirname(__file__), '..', 'src', 'ex_5_1.py')
 
 
 def test_ex_5_1_has_description(capfd):
-    system(f'python "{MODULE_PATH}" -h')
-    out_fd, _ = capfd.readouterr()
-
-    assert "prints" in out_fd
+    run_command = run(['python', MODULE_PATH, '-h'], stdout=PIPE, stderr=PIPE, text=True)
+    assert "prints the number of lines" in run_command.stdout.lower()
 
 
 def test_ex_5_1_prints_correct_line_count(capfd):
-    infile_fixture = path.join(
-        path.dirname(__file__),
+    infile_fixture = os.path.join(
+        os.path.dirname(__file__),
         "fixtures",
         "ex_5_0_fixture.txt",
     )
-    system(f'python "{MODULE_PATH}" "{infile_fixture}"')
-
-    out, _ = capfd.readouterr()
-
-    assert out == "4\n"
+    run_command = run(['python', MODULE_PATH, infile_fixture], stdout=PIPE, stderr=PIPE, text=True)
+    assert run_command.stdout.strip() == f"Number of lines in {infile_fixture}: 4"

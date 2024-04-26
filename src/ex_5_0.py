@@ -2,21 +2,10 @@
 
 
 def line_count(infile):
-    """
-       Count the number of lines in the given file and print the count to the console.
-
-       Args:
-       - infile (str): The name of the input file.
-
-       Returns:
-       - None
-       """
+    """Count the number of lines in the file."""
     with open(infile, 'r') as file:
         lines = file.readlines()
-        count = len(lines)
-        print(f"Number of lines in {infile}: {count}")
-    pass
-
+    return len(lines)
 
 
 if __name__ == "__main__":
@@ -28,4 +17,5 @@ if __name__ == "__main__":
 
     # Test line_count with a file from the data directory
     data_directory = get_repository_root() / "data"
-    line_count(data_directory / "ex_5_2-data.csv")
+    count = line_count(data_directory / "ex_5_2-data.csv")
+    print(f"Number of lines in {data_directory / 'ex_5_2-data.csv'}: {count}")
