@@ -2,6 +2,19 @@
 
 
 def line_count(infile):
+    """
+       Count the number of lines in the given file and print the count to the console.
+
+       Args:
+       - infile (str): The name of the input file.
+
+       Returns:
+       - None
+       """
+    with open(infile, 'r') as file:
+        lines = file.readlines()
+        count = len(lines)
+        print(f"Number of lines in {infile}: {count}")
     pass
 
 

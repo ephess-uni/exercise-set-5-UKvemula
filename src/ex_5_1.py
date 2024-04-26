@@ -6,7 +6,11 @@ except ImportError:
 
 
 def main(infile):
-    """Call line_count with the infile argument."""
+    parser = argparse.ArgumentParser(description="This program prints the number of lines in infile.")
+    parser.add_argument('infile', help='Input file name')
+    args = parser.parse_args()
+
+    line_count(args.infile)
     line_count(infile)
 
 
